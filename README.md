@@ -101,16 +101,6 @@ install.sh                  install / --uninstall
 - `bin/orch` sets the default conductor display name.
 - Workers report to the conductor by its **display name**, so keep the conductor's name unique in the herdr session.
 
-## Gotchas found while building this
-
-- `herdr agent start ... -- --append-system-prompt "<multi-line>"` fails with `invalid_agent_argument`. Pass the rules with `--append-system-prompt-file`.
-- Putting the word `ultracode` inside an instruction is not reliable. herdr attaches a keyword notice, but workers may not trust it as a system notice. `herdr agent prompt <handle> "/effort ultracode on"` enables it for the whole session.
-- herdr splits only right and down, so the first worker lands below the conductor. `row.py` swaps the two panes so the conductor ends up at the bottom; pane ids and processes are kept.
-- herdr agent handles must be lowercase ASCII (`[a-z][a-z0-9_-]{0,31}`). Display names set with `claude -n` can be any language, and cross-session messages are addressed by display name.
-- A `/compact` that lands with a leading space becomes a plain message and does nothing. Clear the input with `herdr agent send-keys <handle> Escape` and resend. The status line may not refresh until the next request, so confirm compaction by a new `"subtype":"compact_boundary"` in the session transcript.
-- `timeout` or `agent_prompt_stalled` from `--wait` does not mean the instruction was lost. Read the screen before resending.
-- Workers must not `/rename`; the conductor finds them by name.
-
 ## License
 
 MIT

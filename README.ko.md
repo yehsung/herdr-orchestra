@@ -100,16 +100,6 @@ install.sh                  설치 / --uninstall
 - `bin/orch` 가 총괄 기본 화면 이름을 정합니다.
 - 하위 세션은 총괄을 **화면 이름**으로 찾습니다. herdr 세션 안에서 총괄 이름은 유일해야 합니다.
 
-## 만들면서 확인한 함정
-
-- `herdr agent start ... -- --append-system-prompt "<여러 줄>"` 은 `invalid_agent_argument` 로 실패합니다. 규칙은 `--append-system-prompt-file` 로 넘깁니다.
-- 지시문에 `ultracode` 낱말만 넣는 방식은 믿을 수 없습니다. herdr 가 키워드 안내를 붙이지만 하위 세션이 시스템 안내로 믿지 않을 수 있습니다. `herdr agent prompt <핸들> "/effort ultracode on"` 이 세션 전체에 정식으로 켭니다.
-- herdr 칸 나누기는 right/down 뿐이라 첫 하위 칸은 총괄 아래에 생깁니다. `row.py` 가 두 칸을 swap 해 총괄을 아래로 보냅니다. 칸 id 와 프로세스는 유지됩니다.
-- herdr 에이전트 핸들은 영문 소문자만(`[a-z][a-z0-9_-]{0,31}`) 됩니다. `claude -n` 으로 붙이는 화면 이름은 어느 언어든 되고, 세션 간 메시지 주소는 화면 이름입니다.
-- 입력 앞에 공백이 붙은 `/compact` 는 일반 메시지로 들어가 아무 일도 안 합니다. `herdr agent send-keys <핸들> Escape` 로 입력칸을 비우고 다시 보냅니다. 상태줄 숫자는 다음 요청 전까지 안 바뀔 수 있으니 세션 기록(jsonl)에 `"subtype":"compact_boundary"` 가 새로 생겼는지로 확인합니다.
-- `--wait` 의 `timeout`·`agent_prompt_stalled` 는 지시가 안 들어갔다는 뜻이 아닙니다. 화면을 읽은 뒤에 다시 보냅니다.
-- 하위 세션은 `/rename` 하지 않습니다. 총괄이 이름으로 찾습니다.
-
 ## 라이선스
 
 MIT
