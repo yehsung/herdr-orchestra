@@ -1,0 +1,3 @@
+#!/bin/sh
+# Run in a fresh herdr tab: starts a conductor session (display name defaults to "conductor").
+exec claude -n "${1:-conductor}" "/orchestra"

@@ -1,0 +1,6 @@
+# files the conductor generates at runtime if someone symlinks orchestra/ into ~/.claude
+orchestra/registry-*.md
+orchestra/worker-rules.*.md
+orchestra/notes/
+*.bak-*
+.DS_Store
