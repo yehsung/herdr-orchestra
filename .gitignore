@@ -1,6 +1,10 @@
 # files the conductor generates at runtime if someone symlinks orchestra/ into ~/.claude
 orchestra/registry-*.md
 orchestra/worker-rules.*.md
+orchestra/inbox-*.json
+orchestra/resume-*.md
+orchestra/board-*.html
 orchestra/notes/
 *.bak-*
 .DS_Store
+__pycache__/
